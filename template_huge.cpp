@@ -1,3 +1,4 @@
+// https://codeforces.com/blog/entry/106195
 #pragma region
 #if defined(DCCLYDE_LOCAL) && __has_include("/home/dcclyde/puzzles/code/templates/superheader.h")
     #include "/home/dcclyde/puzzles/code/templates/superheader.h"
