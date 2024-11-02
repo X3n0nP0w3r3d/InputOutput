@@ -29,6 +29,29 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    cin >> n;
+    int sr=0;
+    int dm=0;
+    bool sd=0;
+    vector<int> cards;
+    for(int i=0;i<n;i++){
+        int nm;
+        cin >> nm;
+        cards.emplace_back(nm);
+    }
+    int l = 0;
+    int r=cards.size()-1;
+    for(int tn=0;tn<n;tn++){
+        if(cards[l] > cards[r]){
+            tn%2 ? dm+=cards[l] : sr+= cards[l];
+            l++;
+        } else {
+            tn%2 ? dm+=cards[r] : sr+= cards[r];
+            r--;
+        }
+    }
+    cout << sr << " " << dm;
 }
 
 int main() {

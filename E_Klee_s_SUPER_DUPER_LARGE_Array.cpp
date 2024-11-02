@@ -23,19 +23,47 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-
+auto sum(ll l, ll r){
+    // l + l+1 + ... + l+r-2 + l+r-1
+    return 1ll*(r-l+1)*(l+r);
+}
 
 void solve() {
-    // #ifndef LOCAL
-    //     freopen("debug.txt", "w", stderr);
-    // #endif
+    #ifndef LOCAL
+        freopen("debug.txt", "w", stderr);
+    #endif
+    int n; // array size
+    int k; // starting number
+    cin >> n >> k;
+
+    ll i = (n + 1)/2;
+    ll minimum = 0;
+    int left = k;
+    int right = k+n-1;
+    if(sum(i, k) > sum(n-i, k+i)){
+
+    }
+    // this thing works but too slow (n comparisons whilst 1x10^9 operations ~1 second of runtime and testcase amount can be large)
+    // while(left <= right){
+    //     if(minimum <= 0){
+    //         //cout << "LEFT: " << minimum << endl;
+    //         minimum += left;
+    //         left++;
+    //     } else {
+    //         //cout << "Right: " << minimum << endl;
+    //         minimum -= right;
+    //         right--;
+    //     }
+    // }
+    
+    // cout << to_string(abs(minimum)) << "\n";
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

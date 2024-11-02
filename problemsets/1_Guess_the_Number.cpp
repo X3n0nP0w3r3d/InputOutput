@@ -29,6 +29,19 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int l=1, r=1e6;
+    while(l!=r){
+        int mid=(l+r+1)/2;
+        cout << mid << endl;
+        string input;
+        cin >> input;
+        if(input[0]=='<'){
+            r = mid-1;
+        } else {
+            l=mid;
+        }
+    }
+    cout << "! " << l << endl;
 }
 
 int main() {

@@ -26,16 +26,31 @@ const ld EPS = 1e-9;
 
 
 void solve() {
+    // abs(a-b) is 5 or 7 semitones = melody perfect
+
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int notes;
+    cin >> notes;
+    vector<int>notel(notes, 0);
+    for(int i=0;i<notes; i++){
+        cin >> notel[i];
+    }
+    for(int j=0; j<notes-1; j++){
+        if(abs(notel[j]-notel[j+1]) != 7 && abs(notel[j]-notel[j+1]) != 5){
+            cout << "NO\n";
+            return;
+        }
+    }
+    cout << "YES\n";
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

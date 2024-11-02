@@ -29,6 +29,21 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    cin >> n;
+    int p=0;
+    int c=0;
+    for(int i=0;i<n;i++){
+        int nm;
+        cin >> nm;
+        if(nm > 0){p+= nm;}
+        else if(nm < 0 && p<=0){
+            c++;
+        } else {
+            p--;
+        }
+    }
+    cout << c;
 }
 
 int main() {
