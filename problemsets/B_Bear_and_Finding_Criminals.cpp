@@ -33,7 +33,6 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
 #define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
 #define longer __int128_t
-#define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end());
 
 // template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
 // template<class t> using pqmax=priority_queue<t>;
@@ -50,6 +49,35 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n,a;
+    int c = 0;
+    cin >> n >> a;
+    a--; // 0 index
+    vector<int> crims(n);
+    for(int i=0;i<n;i++){
+        cin >> crims[i];
+    }
+    if(crims[a] > 0) c++;
+    int lp=a;
+    int rp=a;
+    while(lp >= 0 || rp < sza(crims)){
+        if(lp < 0){
+            if(crims[rp] > 0) c++;
+            while(rp++){
+                if(rp > sza(crims)-1) break;
+                if(crims[rp] > 0) c++;
+            }
+        } else if (rp > sza(crims)-1){
+            if(crims[lp] > 0) c++;
+            while(lp--){
+                if(crims[lp] > 0) c++;
+            }
+        }
+        lp--;
+        rp++;
+        if(crims[lp] + crims[rp] == 2) c+=2;
+    }
+    cout << c;
 }
 
 int main() {

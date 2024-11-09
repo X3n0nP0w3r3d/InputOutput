@@ -50,6 +50,31 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n,m;
+    cin >> n >> m;
+    vector<int> boxes;
+    map<int,int> cnt;
+    ll maxcnt = 0;
+    for(int i=0; i<m; i++){
+        int a,b;
+        cin >> a >> b;
+        cnt[b] += a;
+        boxes.pb(b);
+    }
+    rsort(boxes);
+    //boxes.erase(unique(boxes.begin(), boxes.end()), boxes.end());
+    mkuniq(boxes);
+    for(int i=0; i<sza(boxes); i++){
+        if(n <= 0) break;
+        if(n < cnt[boxes[i]]){
+            maxcnt += boxes[i] * n;
+            n = 0;
+        } else {
+            n-=cnt[boxes[i]];
+            maxcnt += boxes[i] * cnt[boxes[i]];
+        }
+    }
+    cout << maxcnt;
 }
 
 int main() {
