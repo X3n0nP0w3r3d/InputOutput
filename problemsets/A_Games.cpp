@@ -18,38 +18,36 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define sza(x) ((int)x.size())
 #define all(a) (a).begin(), (a).end()
 
-/*------------------------------------*/
-#define ceild(a,b) (a+b-1)/b
-#define ynw(x) cout<<(x?"YES\n":"NO\n")
-#define rall(a) (a).rbegin(), (a).rend()
-#define eb emplace_back
-#define pb push_back
-#define fi first
-#define se second
-#define stoi stoll
-#define mp make_pair
-#define rsort(x) sort(rall(x))
-#define pii pair<int,int>
-#define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
-#define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
-#define longer __int128_t
-#define range(a,b) for(ll _=ll(a); _<ll(b); _++)
-
-template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
-template<class t> using pqmax=priority_queue<t>;
-/*------------------------------------*/
-
 const int MAX_N = 1e5 + 5;
 const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 
-
+// AC
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    cin >> n;
+    int cnt;
+    int sz = n;
+    vector<pair<int ,int>> teams;
+    for(int i=0; i < n; i++){
+        int h;
+        int a;
+        cin >> h >> a;
+        teams.push_back({h, a});
+    }
+    // 0 index
+    while(n--){
+        for(int j=0;j<sz; j++){
+            if(j==n) continue;
+            if(teams[j].second == teams[n].first) cnt++;
+        }
+    }
+    cout << cnt;
 }
 
 int main() {

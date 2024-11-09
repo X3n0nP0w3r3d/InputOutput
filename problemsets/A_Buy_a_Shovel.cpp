@@ -23,10 +23,23 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
+
+
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int k;
+    int cst;
+    int r;
+    cin >> k >> r;
+    cst = k;
+    int min = 1;
+    while(k%10 != 0 && (k-r)%10!=0) {
+        k+=cst;
+        min++;
+    }
+    cout << min;
 }
 
 int main() {

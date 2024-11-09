@@ -18,27 +18,6 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define sza(x) ((int)x.size())
 #define all(a) (a).begin(), (a).end()
 
-/*------------------------------------*/
-#define ceild(a,b) (a+b-1)/b
-#define ynw(x) cout<<(x?"YES\n":"NO\n")
-#define rall(a) (a).rbegin(), (a).rend()
-#define eb emplace_back
-#define pb push_back
-#define fi first
-#define se second
-#define stoi stoll
-#define mp make_pair
-#define rsort(x) sort(rall(x))
-#define pii pair<int,int>
-#define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
-#define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
-#define longer __int128_t
-#define range(a,b) for(ll _=ll(a); _<ll(b); _++)
-
-template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
-template<class t> using pqmax=priority_queue<t>;
-/*------------------------------------*/
-
 const int MAX_N = 1e5 + 5;
 const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
@@ -50,6 +29,15 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    string s;
+    cin >> s;
+    string ins;
+    cin >> ins;
+    int pos = 0;
+    for(int i=0; i<size(ins); i++){
+        if(s[pos] == ins[i]) pos++;
+    }
+    cout << pos+1;
 }
 
 int main() {

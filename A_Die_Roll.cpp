@@ -18,27 +18,6 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define sza(x) ((int)x.size())
 #define all(a) (a).begin(), (a).end()
 
-/*------------------------------------*/
-#define ceild(a,b) (a+b-1)/b
-#define ynw(x) cout<<(x?"YES\n":"NO\n")
-#define rall(a) (a).rbegin(), (a).rend()
-#define eb emplace_back
-#define pb push_back
-#define fi first
-#define se second
-#define stoi stoll
-#define mp make_pair
-#define rsort(x) sort(rall(x))
-#define pii pair<int,int>
-#define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
-#define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
-#define longer __int128_t
-#define range(a,b) for(ll _=ll(a); _<ll(b); _++)
-
-template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
-template<class t> using pqmax=priority_queue<t>;
-/*------------------------------------*/
-
 const int MAX_N = 1e5 + 5;
 const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
@@ -50,6 +29,22 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int y;
+    int w;
+    int divisor=6;
+    string prob;
+    cin >> y >> w;
+    int num=6-max(y, w)+1;
+    while(num%2==0 && divisor%2==0){
+        num/=2;
+        divisor/=2;
+    }
+    while(num%3==0 && divisor%3==0){
+        num/=3;
+        divisor/=3;
+    }
+    prob = to_string(num)+"/"+to_string(divisor);
+    cout << prob;
 }
 
 int main() {
