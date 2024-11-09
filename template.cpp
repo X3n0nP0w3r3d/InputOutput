@@ -33,10 +33,9 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
 #define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
 #define longer __int128_t
-#define range(a,b) for(ll _=ll(a); _<ll(b); _++)
 
-template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
-template<class t> using pqmax=priority_queue<t>;
+// template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
+// template<class t> using pqmax=priority_queue<t>;
 /*------------------------------------*/
 
 const int MAX_N = 1e5 + 5;
