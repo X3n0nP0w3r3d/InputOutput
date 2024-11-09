@@ -19,7 +19,7 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define all(a) (a).begin(), (a).end()
 
 /*------------------------------------*/
-#define cdiv(a,b) (a+b-1)/b
+#define ceild(a,b) (a+b-1)/b
 #define ynw(x) cout<<(x?"YES\n":"NO\n")
 #define rall(a) (a).rbegin(), (a).rend()
 #define eb emplace_back
@@ -35,12 +35,8 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define longer __int128_t
 #define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end());
 
-template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
-
 // template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
 // template<class t> using pqmax=priority_queue<t>;
-/*------------------------------------*/
-const int MX = (int)2e5 + 5;
 /*------------------------------------*/
 
 const int MAX_N = 1e5 + 5;
@@ -49,11 +45,53 @@ const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 
+// I didn't even try finish i only knew it was dp :/
+// void solve() {
+//     // #ifndef LOCAL
+//     //     freopen("debug.txt", "w", stderr);
+//     // #endif
+//     // select intvl [l,r] to skip
+//     // a > x -> rating x will increase by 1
+//     // a=x -> rating x is unchanged
+//     // a < x -> rating x decrease by 1
+//     // 1 contest must be skipped
 
-void solve() {
-    // #ifndef LOCAL
-    //     freopen("debug.txt", "w", stderr);
-    // #endif
+//     int x = 0; // rating
+//     int n;
+//     cin >> n;
+//     vector<int> contests;
+//     vector<pii> groups;
+//     vector<int> losing(n);
+//     for(int i=0; i<n; i++){
+//         int a;
+//         cin >> a;
+//         contests.eb(a);
+//     }
+//     int ind = 0;
+//     pii group = {};
+//     bool lost = 0;
+//     for(int i=0; i<n; i++){
+//         if(x==contests[i]) continue;
+//         if(x>contests[i]) {
+//             losing[ind]++;
+//             if(!lost){
+//                 lost = true;
+//                 group.first = i;
+//             }
+//             continue;
+//         }
+//         if(x<contests[i]){
+//             ind++;
+//             if(lost){
+//                 group.second = i-1;
+//                 lost = false;
+//             }
+//             x++;
+//         }
+//     }
+// }
+
+int solve(){
     
 }
 
@@ -61,7 +99,7 @@ int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

@@ -19,7 +19,7 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define all(a) (a).begin(), (a).end()
 
 /*------------------------------------*/
-#define cdiv(a,b) (a+b-1)/b
+#define ceild(a,b) (a+b-1)/b
 #define ynw(x) cout<<(x?"YES\n":"NO\n")
 #define rall(a) (a).rbegin(), (a).rend()
 #define eb emplace_back
@@ -34,13 +34,10 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
 #define longer __int128_t
 #define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end());
-
-template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
+#define countn(x, y) count(all(x), y);
 
 // template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
 // template<class t> using pqmax=priority_queue<t>;
-/*------------------------------------*/
-const int MX = (int)2e5 + 5;
 /*------------------------------------*/
 
 const int MAX_N = 1e5 + 5;
@@ -49,19 +46,57 @@ const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 
+// long ass way to not work
+// void solve() {
+//     // #ifndef LOCAL
+//     //     freopen("debug.txt", "w", stderr);
+//     // #endif
+//     // int n;
+//     // string s;
+//     // string r;
+//     // cin >> n >> s >> r;
+//     // int tgt=n-1;
+//     // int rplc_ind=0;
+//     // for(int i=0; i<sza(s); i++){
+//     //     while(s.substr(i, 2)=="10" || s.substr(i, 2)=="01"){
+//     //         s[i] = r[rplc_ind];
+//     //         s.erase(s.begin()+i+1);
+//     //         rplc_ind++;
+//     //         if(i-1 >= 0 && (s.substr(i-1, 2) == "10" || s.substr(i-1, 2) == "01" )){
+//     //             i--;
+//     //         }
+//     //     }
+//     // }
+//     // if(s.substr(0, 2) == "01" || s.substr(0, 2) == "10"){
+//     //     rplc_ind++;
+//     // }
+//     // ynw(rplc_ind==tgt);
+// }
 
-void solve() {
-    // #ifndef LOCAL
-    //     freopen("debug.txt", "w", stderr);
-    // #endif
-    
+void solve(){
+    int n;
+    string s;
+    string r;
+    cin >> n >> s >> r;
+    int x = countn(s, '0'); //count(s.begin(), s.end(), '0');
+    int y = n - x;
+    dbg(x, y);
+    for(int i=0;i<n-1; i++){
+        if(x == 0 || y==0){
+            ynw(0);
+            return;
+        }
+        if(r[i]=='1') x--;
+        else y--; 
+    }
+    ynw(1);
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

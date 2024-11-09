@@ -19,7 +19,7 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define all(a) (a).begin(), (a).end()
 
 /*------------------------------------*/
-#define cdiv(a,b) (a+b-1)/b
+#define ceild(a,b) (a+b-1)/b
 #define ynw(x) cout<<(x?"YES\n":"NO\n")
 #define rall(a) (a).rbegin(), (a).rend()
 #define eb emplace_back
@@ -35,12 +35,8 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define longer __int128_t
 #define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end());
 
-template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
-
 // template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
 // template<class t> using pqmax=priority_queue<t>;
-/*------------------------------------*/
-const int MX = (int)2e5 + 5;
 /*------------------------------------*/
 
 const int MAX_N = 1e5 + 5;
@@ -54,14 +50,21 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
-    
+    int l,r,k; // min int in S, max int in S, k
+    int opcount=0;
+    cin >> l >> r >> k;
+    int upperl = r/k;
+    if(upperl >= l){
+        opcount = abs(upperl-l)+1;
+    }
+    cout << opcount << "\n";
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();
