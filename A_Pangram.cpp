@@ -56,6 +56,13 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    string inp;
+    cin >> n >> inp;
+    uppercase(inp);
+    sort(all(inp));
+    mkuniq(inp);
+    ynw(sza(inp)==26);
 }
 
 int main() {

@@ -33,9 +33,8 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
 #define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
 #define longer __int128_t
-#define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end())
-#define countn(x, y) count(all(x), y)
-#define uppercase(x) transform(x.begin(), x.end(), x.begin(), ::toupper)
+#define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end());
+#define countn(x, y) count(all(x), y);
 
 template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 
@@ -56,6 +55,12 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    string inp;
+    string comp;
+    cin >> inp >> comp;
+    for(int i=0; i<sza(inp); i++){
+        cout << to_string(inp[i]!=comp[i]);
+    }
 }
 
 int main() {

@@ -19,7 +19,7 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define all(a) (a).begin(), (a).end()
 
 /*------------------------------------*/
-#define ceild(a,b) (a+b-1)/b
+#define cdiv(a,b) (a+b-1)/b
 #define ynw(x) cout<<(x?"YES\n":"NO\n")
 #define rall(a) (a).rbegin(), (a).rend()
 #define eb emplace_back
@@ -34,9 +34,14 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
 #define longer __int128_t
 #define mkuniq(x) x.erase(unique(x.begin(), x.end()), x.end());
+#define countn(x, y) count(all(x), y);
+
+template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 
 // template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
 // template<class t> using pqmax=priority_queue<t>;
+/*------------------------------------*/
+const int MX = (int)2e5 + 5;
 /*------------------------------------*/
 
 const int MAX_N = 1e5 + 5;
@@ -45,80 +50,50 @@ const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 
-// I didn't even try finish i only knew it was dp :/
+
 // void solve() {
 //     // #ifndef LOCAL
 //     //     freopen("debug.txt", "w", stderr);
 //     // #endif
-//     // select intvl [l,r] to skip
-//     // a > x -> rating x will increase by 1
-//     // a=x -> rating x is unchanged
-//     // a < x -> rating x decrease by 1
-//     // 1 contest must be skipped
-
-//     int x = 0; // rating
-//     int n;
-//     cin >> n;
-//     vector<int> contests;
-//     vector<pii> groups;
-//     vector<int> losing(n);
-//     for(int i=0; i<n; i++){
-//         int a;
-//         cin >> a;
-//         contests.eb(a);
-//     }
+//     string s;
+//     string ss;
+//     cin >> s;
+//     cin >> ss;
 //     int ind = 0;
-//     pii group = {};
-//     bool lost = 0;
-//     for(int i=0; i<n; i++){
-//         if(x==contests[i]) continue;
-//         if(x>contests[i]) {
-//             losing[ind]++;
-//             if(!lost){
-//                 lost = true;
-//                 group.first = i;
-//             }
-//             continue;
-//         }
-//         if(x<contests[i]){
-//             ind++;
-//             if(lost){
-//                 group.second = i-1;
-//                 lost = false;
-//             }
-//             x++;
-//         }
+//     int i=0;
+//     int j=0;
+//     for(int i=0;i<sza(s);i++){
+//         if(s[i]=='?'){
+//             if(ind < sza(ss)) s[i] = ss[ind++];
+//             else s[i]='a';
+//         } else if (s[i]==ss[ind]) ind++;
+//     }
+//     if(ind >= sza(ss)){
+//         ynw(1);
+//         cout << s << "\n";
+//     } else {
+//         ynw(0);
 //     }
 // }
 
-// jiangly soln
-int solve(){
-    int n;
-    std::cin >> n;
-    
-    std::vector<int> a(n);
-    for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
+// attempt from memory
+void solve(){
+    string s;
+    string r;
+    cin >> s >> r;
+    int ind=0;
+    for(int i=0; i<sza(s); i++){
+        if(s[i]=='?'){
+            if(ind < sza(r)) s[i] = r[ind++];
+            else s[i]='a';
+        } else if(s[i]==r[ind]) ind++;
     }
-    
-    std::array<int, 3> dp {0, -1E9, -1E9};
-    for (int i = 0; i < n; i++) {
-        dp[2] = std::max(dp[2], dp[1]);
-        dp[1] = std::max(dp[1], dp[0]);
-        for (int j = 0; j < 3; j++) {
-            if (j == 1) {
-                continue;
-            }
-            int &x = dp[j];
-            if (a[i] > x) {
-                x++;
-            } else if (a[i] < x) {
-                x--;
-            }
-        }
+    if(ind >= sza(r)){
+        ynw(1);
+        cout << s << "\n";
+    } else {
+        ynw(0);
     }
-    
-    std::cout << std::max(dp[1], dp[2]) << "\n";
 }
 
 int main() {
@@ -131,3 +106,9 @@ int main() {
         solve();
     }
 }
+
+/** important stuff to remember 
+ * no getting stuck on a singular approach
+ * edge cases (duplicate values? crazy large values?)
+ * document thoughts
+ */
