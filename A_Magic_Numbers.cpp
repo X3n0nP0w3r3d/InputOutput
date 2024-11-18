@@ -97,6 +97,23 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+	string s;
+	cin >> s;
+	for(int i=0; i<sza(s); i++){
+		if(s.substr(i, 3) == "144"){
+			i+=2;
+			continue;
+		} else if(s.substr(i, 2) == "14"){
+			i++;
+			continue;
+		} else if (s[i]=='1'){
+			continue;
+		} else {
+			ynw(0);
+			return;
+		}
+	}
+	ynw(1);
 }
 
 int main() {

@@ -97,6 +97,13 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    string s;
+    cin >> s;
+    int ans = 0;
+    for(auto i : s){
+        if(i=='1')ans++;
+    }
+    cout << ans;
 }
 
 int main() {

@@ -97,6 +97,9 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int a,b;
+    cin >> a >> b;
+    cout << (a*b%2==0 ? "Even" : "Odd");
 }
 
 int main() {

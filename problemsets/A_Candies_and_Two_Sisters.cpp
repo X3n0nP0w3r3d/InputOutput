@@ -97,13 +97,18 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+	int n;
+	cin >> n;
+	if(n < 3){cout << 0 << "\n";return;}
+	if(n%2==0)cout << n/2 - 1 << "\n";
+	else cout << n/2 << "\n"; 
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

@@ -97,6 +97,20 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    cin >> n;
+    int a=1e9;
+    vt<int> nums(n);
+    for(int i=0;i<n; i++){
+        int cnt=0;
+        cin >> nums[i];
+        while(nums[i]%2==0){
+            nums[i]/=2;
+            cnt++;
+        }
+        a=min(a, cnt);
+    }
+    cout << a;
 }
 
 int main() {

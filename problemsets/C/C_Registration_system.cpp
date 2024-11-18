@@ -97,6 +97,14 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    cin >> n;
+    string name;
+    unordered_map<string, int> names;
+    while(cin >> name){
+        names[name] > 0 ? cout << name << names[name] << "\n" : cout << "OK\n";
+        names[name]++;
+    }
 }
 
 int main() {

@@ -6,8 +6,7 @@ template<typename A, typename B> ostream& operator<<(ostream &os, const pair<A, 
 template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
 void dbg_out() { cerr << endl; }
 template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr << ' ' << H; dbg_out(T...); }
-//#ifdef LOCAL
-#ifndef ONLINE_JUDGE
+#ifndef LOCAL
 #define dbg(...) cerr << "(" << #__VA_ARGS__ << "):", dbg_out(__VA_ARGS__)
 #else
 #define dbg(...)
@@ -97,6 +96,15 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    string s;
+    cin >> s;
+    for(int i=0; i<sza(s)-6;i++){
+        if(s.substr(i, 7)=="1111111" || s.substr(i, 7)=="0000000"){
+            ynw(1);
+            return;
+        }
+    }
+    ynw(0);
 }
 
 int main() {

@@ -97,6 +97,23 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    string n;
+    string last;
+    int cnt = 0;
+    cin >> n;
+    auto total = [&](string& s){
+        string before = s;
+        ll total = 0;
+        for(auto c : s){
+            total += c - '0';
+        }
+        s=to_string(total);
+        if(s==before)return 0;
+        cnt++;
+        return 1;
+    };
+    while(total(n));
+    cout << cnt;
 }
 
 int main() {

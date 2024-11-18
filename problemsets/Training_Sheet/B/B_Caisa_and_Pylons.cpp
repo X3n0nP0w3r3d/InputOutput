@@ -97,6 +97,19 @@ void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int n;
+    cin >> n;
+    vt<int> h(n);
+    int t = 0;
+    int minD = 0;
+    for(int i=0;i<n;i++){
+        cin >> h[i]; 
+    }
+    for(int j=0; j<n-1; j++){
+        t += h[j]-h[j+1];
+        minD = min(t, minD);
+    }
+    cout << h[0] + abs(minD);
 }
 
 int main() {

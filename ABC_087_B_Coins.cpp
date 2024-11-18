@@ -91,12 +91,21 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-
+int combos(int a){
+    dbg(a);
+    if(a<0) return 0;
+    if(a==0) return 1;
+    return combos(a-50) + combos(a-100) + combos(a-500);
+}
 
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int a,b,c,x;
+    cin >> a >> b >> c >> x;
+    int ans=0;
+    cout << combos(x);
 }
 
 int main() {

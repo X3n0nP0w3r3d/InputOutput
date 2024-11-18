@@ -91,19 +91,42 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
+/**
+ * KEY IDEA: In order for the permutation to be sorted such that pi = i for all numbers 
+ * the number in position i has to be off by no more than 1 index otherwise it is impossible to sort
+ * since the neighbouring number will eventually be greater than 1 which makes swapping it impossible
+ */
 
+// 3 ATTEMPTS
+/** MISTAKES TO NOTE:
+ * FIRST ATTEMPT WAS USING A SORT (not very effective method since sorting will require two loops to check and will result in illegal operations)
+ * SECOND ATTEMPT was using the below method but early returning caused input order to get fucked (it would read the next value in the permutation 
+ * which wasn't read as N thinking that the next permutation had that length) [VERY BAD]
+ * THIRD ATTEMPT was fixing the previous issue by using a flag instead and taking in the input regardless of possibility to get the next permutation length correctly (AC)
+ */
 
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+	int n;
+	bool possible = 1;
+	cin >> n;
+	vt<int>a(n);
+	for(int i=0; i<n; i++){
+		cin >> a[i];
+		if(abs(a[i] - (i+1)) > 1){
+			possible = 0;
+		}
+	}
+	ynw(possible);
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

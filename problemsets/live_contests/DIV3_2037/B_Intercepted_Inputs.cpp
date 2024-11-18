@@ -91,19 +91,52 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-
+vt<int> getDivisors(int n){
+    vt<int> divs;
+    for(int i=1; i<=sqrt(n); i++){
+        if(n%i==0){
+            divs.eb(i);
+            if(i != n/i){
+                divs.eb(n/i);
+            }
+        }
+    }
+    return divs;
+}
 
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    int k,n,m;
+    int cnt=0;
+    cin >> k;
+    vt<int> inp(k);
+    int tgt_sz = k-2;
+    for(int i=0; i<k; i++){
+        cin >> inp[i];
+    }
+    vt<int> divisors = getDivisors(tgt_sz);
+    for(int i=0; i<sza(divisors); i++){
+        auto ind = find(all(inp), tgt_sz/divisors[i]);
+        auto divcheck = find(all(inp), divisors[i]);
+        if(tgt_sz/divisors[i] == divisors[i] && count(inp.begin(), inp.end(), tgt_sz/divisors[i]) > 1){
+            cout << divisors[i] << " " << divisors[i] << "\n";
+            return;
+        } else {
+            if(ind!=inp.end() && divcheck != inp.end()){
+                cout << divisors[i] << " " << *ind << "\n";
+                return;
+            }
+        }
+    }
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();

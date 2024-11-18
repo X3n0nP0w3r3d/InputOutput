@@ -91,19 +91,73 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-
-
 void solve() {
+  // yeah this shit doesnt work btw
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
+    // int n;
+    // cin >> n;
+    // if(n <= 3){
+    //     cout << -1 << "\n";
+    //     return;
+    // }
+    // string start = "1 8 7 3 6 2 4 5";
+    // string res = start;
+    // if(n > 8){
+    //     vt<int> nums(n-8);
+    //     iota(nums.begin(), nums.end(), 9);
+    //     int pt = 0;
+    //     int lastnum = 5;
+    //     while(sza(nums) > 0){
+    //         if(getDivisors(lastnum + nums[pt]) > 2){
+    //             res+= nums[pt]+" ";
+    //             lastnum = nums[pt];
+    //             nums.erase(nums.begin()+pt);
+    //             pt = 0;
+    //         } else {
+    //             pt++;
+    //         }
+    //         if(pt > sza(nums)-1){
+    //             cout << -1;
+    //             return;
+    //         }
+    //     }
+    // } else {
+    //     cout << -1 << "\n";
+    //     return;
+    // }
+    // cout << res;
+    // cout << "\n";
+    int n;
+    cin >> n;
+    if (n < 5) {
+      cout << -1 << '\n';
+      return;
+    }
+    vector<int> a;
+    for (int i = 1; i <= n; i++) {
+      if (i % 2 == 1 && i != 5) {
+        a.push_back(i);
+      }
+    }
+    a.push_back(5);
+    a.push_back(4);
+    for (int i = 1; i <= n; i++) {
+      if (i % 2 == 0 && i != 4) {
+        a.push_back(i);
+      }
+    }
+    for (int i = 0; i < n; i++) {
+      cout << a[i] << " \n"[i == n - 1];
+    }
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();
