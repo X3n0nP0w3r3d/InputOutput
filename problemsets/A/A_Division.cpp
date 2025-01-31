@@ -32,6 +32,7 @@ template<typename Head, typename... Tail> void dbg_out(Head H, Tail... T) { cerr
 #define mp make_pair
 #define rsort(x) sort(rall(x))
 #define pii pair<int,int>
+#define pll pair<long long,long long>
 #define lb(v,x) (int)(lower_bound(ALL(v),x)-v.begin())
 #define ub(v,x) (int)(upper_bound(ALL(v),x)-v.begin())
 #define longer __int128_t
@@ -80,6 +81,11 @@ template<class A, size_t S> void read(array<A, S>& x) {
 
 template <class T> using pqg = priority_queue<T, vector<T>, greater<T>>;
 
+mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+// mt19937_64 rng(61378913);
+/* usage - just do rng() */
+ 
+
 // template<class t> using pqmin=priority_queue<t,vc<t>,greater<t>>;
 // template<class t> using pqmax=priority_queue<t>;
 /*------------------------------------*/
@@ -91,46 +97,46 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-// 2nd attempt after analysing tourist solution
 
-/** key idea: you cannot have a possible permutation that satisfies the conditions if n<5
-* even numbers always composite (n>2) -> putting numbers of same parity next to eachother makes them composite when summed
-* you need two numbers that add to a composite number to be in the middle that is odd AND even (5 and 4) to join the two sets of numbers.
-* The answer is then the even numbers and 4 and 5 then odd numbers or vice versa (with 5 4) joining.
-*/
 
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
-    int n;
-    cin >> n;
-    if(n<5){
-        cout << "-1\n";
-        return;
+    int r;
+    read(r);
+    if(r<=1399){
+        cout << "Division 4";
+    } else if(r>=1400 && r<=1599){
+        cout << "Division 3";
+    } else if(r>=1600 && r<=1899){
+        cout << "Division 2";
+    } else {
+        cout << "Division 1";
     }
-    for(int i=1;i<=n; i++){
-        if(i%2==1 && i!=5){
-            cout << i << " ";
-        }
-    }
-    cout << "5 4 ";
-    for(int i=1; i<=n; i++){
-        if(i%2==0 && i!=4){
-            cout << i << " ";
-        }
-    }
+    cout << "\n";
 }
 
 int main() {
+	//#define benchmark_local
+	#ifdef benchmark_local
+        auto begin = std::chrono::high_resolution_clock::now();
+    #endif
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
+	cout << setprecision(12) << fixed;
     cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();
     }
+
+	#ifdef benchmark_local
+        auto end = std::chrono::high_resolution_clock::now();
+        cerr << setprecision(4) << fixed;
+        cerr << "Execution time: " << std::chrono::duration_cast<std::chrono::duration<double>>(end - begin).count() << " seconds" << endl;
+    #endif
 }
 
 /** important stuff to remember 

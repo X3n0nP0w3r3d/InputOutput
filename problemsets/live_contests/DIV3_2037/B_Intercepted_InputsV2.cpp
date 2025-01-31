@@ -91,28 +91,35 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
-int combos(int a){
-    dbg(a);
-    if(a<0) return 0;
-    if(a==0) return 1;
-    return combos(a-50) + combos(a-100) + combos(a-500);
-}
+
 
 void solve() {
     // #ifndef LOCAL
     //     freopen("debug.txt", "w", stderr);
     // #endif
-    int a,b,c,x;
-    cin >> a >> b >> c >> x;
-    int ans=0;
-    cout << combos(x);
+    int n;
+    cin >> n;
+    vt<int>nums(n);
+    vt<int>cnt(n+1);
+    for(int i=0;i<n;i++){
+        cin >> nums[i];
+        cnt[nums[i]]++;
+    }
+    for(int x=1; x<=n;x++){
+        if(cnt[x] > 0 && (n-2)%x==0){
+            if(cnt[(n-2)/x] > 0){
+                cout << x << " " << (n-2)/x << "\n";
+                return;
+            }
+        }
+    }
 }
 
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
     for (int t = 1; t <= tc; t++) {
         // cout << "Case #" << t << ": ";
         solve();
